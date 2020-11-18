@@ -10,7 +10,9 @@ const superHeroes = require('./super-heroes.json');
  * ]
  */
 const getDCHeroes = (heroes) => {
-  return heroes;
+  return heroes.filter((hero) => hero.publisher === "DC Comics").map((hero) => {
+    return { ...hero };
+  });
 }
 
 /**
@@ -27,7 +29,12 @@ const getDCHeroes = (heroes) => {
  * ]
  */
 const convertCharactersToArray = (heroes) => {
-  return heroes;
+  return heroes.map((hero) => {
+    return {
+      ...hero,
+      characters: hero.characters.split(", "),
+    };
+  });
 }
 
 /**
@@ -44,7 +51,11 @@ const convertCharactersToArray = (heroes) => {
  * }
  */
 const groupByPublisher = (heroes) => {
-  return heroes;
+  return heroes.reduce((a, hero) => {
+    a[hero.publisher] = a[hero.publisher] || [];
+    a[hero.publisher].push({ ...hero });
+    return a;
+  }, {});
 }
 
 /**
@@ -61,7 +72,12 @@ const groupByPublisher = (heroes) => {
  * ]
  */
 const getDCHeroesWithMoreThanOneCharacter = (heroes) => {
-  return heroes;
+  return heroes.map((hero) => {
+    return {
+      ...hero,
+      characters: hero.characters.split(", "),
+    }
+  }).filter((hero) => hero.characters.length > 1);
 }
 
 module.exports = {
