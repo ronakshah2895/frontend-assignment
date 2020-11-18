@@ -13,8 +13,19 @@ $small-breakpoint: 500px;
 $medium-breakpoint: 960px;
 
 .app {
+  font-size: 14px;
+
   * {
     font-family: 'Inter', sans-serif;
     box-sizing: border-box;
+  }
+
+  .navbar .nav-item.active {
+    background-color: $primary;
+    border-radius: 5px;
+
+    .nav-link {
+      color: white;
+    }
   }
 }
